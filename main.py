@@ -1,14 +1,13 @@
 import requests
 import json
 
-# Step 1: Your personal details
 data = {
     "name": "Tanishka Soni",
     "regNo": "0827CI221135",
     "email": "tanishkasoni221237@acropolis.in"
 }
 
-# Step 2: Generate webhook and access token
+
 init_url = "https://bfhldevapigw.healthrx.co.in/hiring/generateWebhook/PYTHON"
 response = requests.post(init_url, json=data)
 if response.status_code != 200:
@@ -18,7 +17,7 @@ response_json = response.json()
 webhook_url = response_json["webhookUrl"]
 access_token = response_json["accessToken"]
 
-# Step 3: Prepare your final SQL query (from Acropolis-Q1)
+
 final_sql_query = """
 SELECT 
     P.AMOUNT AS SALARY,
@@ -38,7 +37,7 @@ ORDER BY
 LIMIT 1;
 """
 
-# Step 4: Submit SQL query to webhook URL
+
 headers = {
     "Authorization": access_token,
     "Content-Type": "application/json"
@@ -50,7 +49,7 @@ payload = {
 
 submit_response = requests.post(webhook_url, headers=headers, json=payload)
 
-# Step 5: Print the result
+
 if submit_response.status_code == 200:
     print("Query submitted successfully!")
 else:
