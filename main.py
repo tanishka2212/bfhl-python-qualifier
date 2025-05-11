@@ -4,7 +4,7 @@ import json
 # Step 1: Your personal details
 data = {
     "name": "Tanishka Soni",
-    "regNo": "REG12347",
+    "regNo": "0827CI221135",
     "email": "tanishkasoni221237@acropolis.in"
 }
 
